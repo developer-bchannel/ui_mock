@@ -1,0 +1,137 @@
+<div ncy-breadcrumb></div>
+
+<div class="row" align="right">
+  <button id="save" name="save" class="btn btn-success">Save</button>
+  <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
+</div>
+
+<div class="row">
+  <form class="form-horizontal">
+  <fieldset>
+
+  <!-- Form Name -->
+  <legend>AFE Basic Information</legend>
+
+  <!-- Search input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="pscNumber">PSC Number</label>
+    <div class="col-md-5">
+      <input id="pscNumber" name="pscNumber" type="search" placeholder="Producion Sharing Contract Id" class="form-control input-md" required="">
+    </div>
+  </div>
+
+  <!-- Select Basic -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="selectAfeTerm">Select AFE Period</label>
+    <div class="col-md-5">
+      <select id="selectAfeTerm" name="selectAfeTerm" class="form-control">
+        <option value="1">Single Year</option>
+        <option value="2">Multiple Year</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Select Multiple -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="accountTypes">Select Budget Schedule(s):</label>
+
+    <div class="col-md-5">
+      <select id="accountTypes" name="accountTypes" class="form-control" required="true">
+        <option value="1">BS18A</option>
+        <option value="2">BS18B</option>
+        <option value="3">BS18C</option>
+        <option value="4">BS18D</option>
+        <option value="5">BS18E</option>
+        <option value="6">BS18F</option>
+        <option value="7">BS18G</option>
+        <option value="8">BS18H</option>
+        <option value="9">BS18I</option>
+        <option value="10">BS19*</option>
+        <option value="12">BS21A*</option>
+        <option value="13">BS21B*</option>
+        <option value="14">BS21C*</option>
+        <option value="15">BS22A*</option>
+        <option value="16">BS22B*</option>
+        <option value="17">BS22C*</option>
+        <option value="18">BS23</option>
+      </select>
+      <p class="help-block">* multiple budget schedule</p>
+    </div>
+  </div>
+
+  <!-- Select Basic -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="selectAfeTerm">Select Well Phase</label>
+    <div class="col-md-5">
+      <select id="selectAfeTerm" name="selectAfeTerm" class="form-control">
+        <option value="1">Exploration</option>
+        <option value="2">Development</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="afeNumber">SKK AFE Number</label>  
+    <div class="col-md-5">
+    <input id="afeNumber" name="afeNumber" type="text" placeholder="Input SKK AFE Number" class="form-control input-md" required="">
+      
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="internalAfeNumber">Internal AFE Number</label>  
+    <div class="col-md-5">
+    <input id="internalAfeNumber" name="internalAfeNumber" type="text" placeholder="Internal AFE#" class="form-control input-md" required="">
+      
+    </div>
+  </div>
+
+  <!-- Textarea -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="comment">Comment</label>
+    <div class="col-md-5">                     
+      <textarea class="form-control" id="comment" name="comment" rows="7"></textarea>
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="estEndDate">Est. End Date</label>  
+    <div class="col-md-5">
+    <input id="estEndDate" name="estEndDate" type="text" placeholder="Est. End Date" class="form-control input-md">
+      
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="estStart">Est. Start Date</label>  
+    <div class="col-md-5">
+    <input id="estStart" name="estStart" type="text" placeholder="Est. Start Date" class="form-control input-md">
+      
+    </div>
+  </div>
+
+  <!-- Button (Double) 
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="save"></label>
+    <div class="col-md-8">
+      <button id="save" name="save" class="btn btn-success">Save</button>
+      <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
+    </div>
+  </div>
+  -->
+
+  </fieldset>
+  </form>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="bsEditor">Budget Schedule Editor</label>
+    <kendo-spreadsheet k-scope-field="projectSheet" 
+        k-sheets ="afeSheets" 
+        k-data-source = "spreadsheetOptions" style="width:100%" id="bsEditor"></kendo-spreadsheet>
+  </div>
+</div>
+

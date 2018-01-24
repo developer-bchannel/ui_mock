@@ -1,0 +1,107 @@
+
+  <script type="text/ng-template" id="podform.html">
+        <div class="modal-header">
+            <h3>Create New Project</h3>
+        </div>
+        <form ng-submit="submit()">
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Project Type</label>
+              <input type="text" class="form-control" ng-model="podNew.projectType" />
+            </div>
+            <div class="form-group">
+              <label>Project Name</label>
+              <input type="text" class="form-control" ng-model="podNew.projectName" />
+          </div>
+          <div class="form-group">
+              <label>Est. Start Date</label>
+              <input type="text" class="form-control" ng-model="podNew.projectStart" />
+            </div>
+            <div class="form-group">
+              <label>Est. End Date</label>
+                <input type="text" class="form-control" ng-model="podNew.projectEnd" /> 
+            </div>
+            <div class="form-group">
+              <label>Remarks</label>
+                <textarea class="form-control" rows="3" ng-model="podNew.projectRemarks"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+              <button class="btn btn-primary" ng-click="submit()">Save</button>
+          </div>
+        </form>
+    </script>
+
+
+<div ncy-breadcrumb></div>
+
+<div class="row">
+  <div class="col-lg-12">
+      <h3 class="page-header">Production Sharing Contract Details</h1>
+  </div> 
+</div>
+<div class="row">
+  <div class="form-group col-xs-6">
+    <label>Contract No</label>
+    <input type="text" class="form-control" ng-model="pscDetail.contractNo" />
+  </div>
+  <div class="form-group col-xs-6">
+    <label>Area</label>
+    <input type="text" class="form-control" ng-model="pscDetail.contractArea" />
+  </div>
+  <div class="form-group col-xs-6">
+    <label>Partner Company</label>
+    <input type="text" class="form-control" ng-model="pscDetail.pscPartner" />
+  </div>
+  <div class="form-group col-xs-8">
+    <label>Estimation Timeline</label> <br>
+    <label>From</label>
+    <input type="text" class="form-control" ng-model="pscDetail.pscPeriod" /> 
+    <label>To</label>
+    <input type="text" class="form-control" ng-model="pscDetail.pscPeriod" />
+  </div>
+  <div class="form-group col-xs-6">
+    <label>Product</label>
+    <input type="text" class="form-control" ng-model="pscDetail.pscProduct" /> 
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">List of All Project Plan</h1>
+    </div>  
+
+    <button type="button" ng-click="openPod()" class="btn btn-sm btn-success">
+      <i class="glyphicon glyphicon-plus">
+      </i> Add New Project
+    </button>
+
+    <button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-danger">
+        <i class="glyphicon glyphicon-remove-circle">
+        </i> Delete Project
+    </button>
+
+    <table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped">
+      <thead>
+      <tr>
+        <th st-sort="contractNo">Id</th>
+        <th st-sort="contractArea">Project Name</th>
+        <th st-sort="contractPartner">Est Start Date</th>
+        <th st-sort="contractPeriod">Est End Date</th>
+      </tr>
+      <tr>
+        <th colspan="5"><input st-search="" class="form-control" placeholder="Input Keyword Here" type="text"/></th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in rowCollection" st-select-row="row">
+          <td>{{row.id}}</td>
+          <td>{{row.projectName}}</td>
+          <td>{{row.estStartDate}}</td>
+          <td>{{row.estEndDate}}</td>
+          <td><a ui-sref="dashboard.projectplanning({contractid:{{row.id}}})">View Detail</a></td>
+        </tr>
+      </tbody>
+    </table>
+</div>

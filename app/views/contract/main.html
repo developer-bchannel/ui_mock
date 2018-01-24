@@ -1,0 +1,79 @@
+	<script type="text/ng-template" id="pscform.html">
+        <div class="modal-header">
+            <h3>Create New Production Sharing Contract</h3>
+        </div>
+        <form ng-submit="submit()">
+          <div class="modal-body">
+          	<div class="form-group">
+            	<label>Contract No</label>
+            	<input type="text" class="form-control" ng-model="pscNew.contractNo" />
+            </div>
+            <div class="form-group">
+	            <label>Area</label>
+	            <input type="text" class="form-control" ng-model="pscNew.contractArea" />
+	        </div>
+	        <div class="form-group">
+	            <label>Partner Company</label>
+	            <input type="text" class="form-control" ng-model="pscNew.pscPartner" />
+            </div>
+            <div class="form-group">
+	            <label>Period</label> <br>
+	           	<label>From</label>
+	           		<input type="text" class="form-control" ng-model="pscNew.pscPeriod" /> 
+	            <label>To</label>
+	            	<input type="text" class="form-control" ng-model="pscNew.pscPeriod" />
+            </div>
+            <div class="form-group">
+	            <label>Product</label>
+	            <label class="radio-inline"><input type="radio" name="optProduct">Oil</label>
+				<label class="radio-inline"><input type="radio" name="optProduct">Gas</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+              <button class="btn btn-primary" ng-click="submit()">Save</button>
+          </div>
+        </form>
+    </script>
+
+
+<div ncy-breadcrumb></div>
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">List of All Production Sharing Contract</h1>
+    </div>  
+    
+    	<button type="button" ng-click="openPsc()" class="btn btn-sm btn-success">
+			<i class="glyphicon glyphicon-plus">
+			</i> Add New Contract
+		</button>
+		<button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-danger">
+				<i class="glyphicon glyphicon-remove-circle">
+				</i> Delete Record
+		</button>
+
+		<table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped">
+			<thead>
+			<tr>
+				<th st-sort="contractNo">Contract No</th>
+				<th st-sort="contractArea">Area</th>
+				<th st-sort="contractPartner">Partner Company</th>
+				<th st-sort="contractPeriod">Period</th>
+				<th st-sort="contractProduct">Product</th>
+			</tr>
+			<tr>
+				<th colspan="7"><input st-search="" class="form-control" placeholder="Input Keyword Here" type="text"/></th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowCollection">
+					<td>{{row.contractNo}}</td>
+					<td>{{row.contractArea}}</td>
+					<td>{{row.contractPartner}}</td>
+					<td>{{row.contractPeriod}}</td>
+					<td>{{row.contractProduct}}</td>
+					<td><a ui-sref="dashboard.projectplanning({contractid:{{row.id}}})">Plan of Development</a></td>
+				</tr>
+			</tbody>
+		</table>
+</div>
