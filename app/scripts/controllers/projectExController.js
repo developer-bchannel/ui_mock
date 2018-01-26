@@ -29,14 +29,10 @@ angular.module('sbAdminApp')
           
           if (widget === $scope.projectSheet) {
             var sheets = $scope.projectSheet.sheets();
-            $http.get('assets/BS19(T).json').success(function(data){
+            $http.get('assets/BS19(T).json').then(function(data){
               $scope.spreadsheetOptions = sheets[0].fromJSON(data);
-              
             }); 
-             
             console.log(sheets); 
-            
-            
             //$scope.spreadsheet.activeSheet(sheets[1]);
           } 
     });

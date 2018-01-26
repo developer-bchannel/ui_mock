@@ -279,6 +279,22 @@ angular
           label:'List All Pre WP&B'
         }
       })
+      .state('dashboard.prewpnb.statusform',{
+        templateUrl:'views/prewpnb/statusproses.html',
+        url:'/prewpnb/proses',
+        controller:'PrewpnbCtrl',
+        resolve:{
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name : 'sbAdminApp',
+                files:['scripts/controllers/prewpnbController.js']
+            })
+          }
+        },
+        ncyBreadcrumb:{
+          label:'List All Pre WP&B'
+        }
+      })
        .state('dashboard.prewpnblanding',{
         templateUrl:'views/prewpnb/landingpage.html',
         url:'/prewpnbpage',
