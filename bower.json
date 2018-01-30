@@ -2,7 +2,8 @@
   "name": "mock-app",
   "version": "0.0.1",
   "dependencies": {
-    "angular": "1.10.x",
+    "jquery": "1.10.x",
+    "angular": "1.6.8",
     "json3": "^3.3.1",
     "es5-shim": "^3.1.0",
     "angular-resource": "^1.2.16",
