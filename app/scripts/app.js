@@ -242,6 +242,22 @@ angular
           label:'List All PreApproved WP&B'
         }
       })
+      .state('dashboard.wpnbapproval.statusform',{
+        templateUrl:'views/wpnbapproval/statusproses.html',
+        url:'/wpnbapproval/proses',
+        controller:'ReportWpnbCtrl',
+        resolve:{
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name : 'sbAdminApp',
+                files:['scripts/controllers/reportwpnbController.js']
+            })
+          }
+        },
+        ncyBreadcrumb:{
+          label:'Update Status Pre WP&B'
+        }
+      })
       .state('dashboard.prewpnb.statusform',{
         templateUrl:'views/prewpnb/statusproses.html',
         url:'/prewpnb/proses',
@@ -255,7 +271,7 @@ angular
           }
         },
         ncyBreadcrumb:{
-          label:'List All Pre WP&B'
+          label:'Update Status Pre WP&B'
         }
       })
        .state('dashboard.prewpnblanding',{

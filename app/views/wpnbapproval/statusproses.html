@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">WP&B Process Monitoring</h3>
+    </div>  
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <label for="reviewTemplate">Download Pre Approved WP&B Excel Template</label>
+    </div>
+    <div class="col-lg-12">
+        <button type="button" class="btn btn-sm btn-primary">
+			<i class="glyphicon glyphicon-download">
+			</i> Download Excel
+		</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <label for="reviewType" class="required">Review Type</label>
+    </div>
+    <div class="col-lg-12">
+        <kendo-dropdownlist k-scope-field="reviewType" k-options="reviewTypeOptions" ng-model="reviewSelected"></kendo-dropdownlist>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <label for="bsSelector" class="required">Revision List</label>
+        </div>
+        <div class="col-lg-12">
+            <kendo-grid options="revisionGridOptions"></kendo-grid>
+        </div>
+    </div>
+
+    <div id="example">
+        <div class="box">
+            <h4>Upload WP&B Documents</h4>
+            <p>
+                Drag and Drop the additional document submission on .doc .xls and .pdf format
+            </p>
+        </div>
+        <form method="post" action="/kendo-ui/upload/submit">
+            <div class="demo-section k-content">
+                <input name="files" id="files" type="file" aria-label="files" />
+                <p style="padding-top: 1em; text-align: right">
+                    <button type="submit" class="k-button k-primary">Submit</button>
+                </p>
+            </div>
+        </form>
+        <script>
+            $(document).ready(function() {
+                $("#files").kendoUpload();
+            });
+        </script>
+    </div>
+</div>

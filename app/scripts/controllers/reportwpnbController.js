@@ -7,7 +7,7 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('ReportWpnbCtrl', ['$scope', '$timeout', '$http', function ($scope, $timeout,$http) {
+.controller('ReportWpnbCtrl', function ($scope, $timeout, $http, $log, $state, $stateParams) {
 
     function clickDetails(e){
         e.preventDefault();
@@ -46,4 +46,43 @@ angular.module('sbAdminApp')
         },
         { command: { text: "Additional Document", click: clickDetails }, title: "Check Additional Documents", width: "20px" }]
       };
-  }]);
+
+      $scope.reviewTypeOptions = {
+        autoWidth: true,
+        dataSource:['SKK Revision', 'Approved by SKK']
+    };
+
+      $scope.revisionGridOptions = {
+        sortable  : true,
+        pageable  : true,
+        toolbar   : ["create"],
+        editable  : "inline",
+        height : 350,
+        columns   : [
+          {
+            field   : "bsType",
+            title   : "BS Type",
+            width   : "7px",
+          },
+          {
+            field   : "bsLine",
+            title   : "BS Line #",
+            width   : "7px"
+          },
+          {
+            field   : "originalValue",
+            title   : "Original Value ($)",
+            width   : "8px"
+          },
+          {
+            field   : "revisionValue",
+            title   : "Original Value ($)",
+            width   : "8px"
+          },
+          {
+            field   : "revisionDescription",
+            title   : "Description",
+            width   : "38px"
+          }]
+      };
+  });
