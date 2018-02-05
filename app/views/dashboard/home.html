@@ -8,7 +8,21 @@
     <!-- /.row -->
     <div class="row">
         <h2>Budget Comparison Graphic</h2><h5>value in (x10.000)</h5>
-        <canvas id="ytdBudget" width="80" height="40"></canvas>
+        <canvas id="ytdBudget" width="80" height="10"></canvas>
+    </div>
+
+    <div class="row">
+        <h2>Budget Comparison Graphic Per Operator Company</h2>
+        <h5>value in (x10.000)</h5>
+        Filter : 
+        <select kendo-drop-down-list  style="width: 100%;">
+            <option>Company A</option>
+            <option>Company B</option>
+            <option>Company C</option>
+            <option>Company D</option>
+        </select>
+
+        <canvas id="ytdOpBudget" width="80" height="10"></canvas>
     </div>
 </div>
 
@@ -19,15 +33,15 @@
         return Math.floor(Math.random() * 15000) + 1;  
     };
 
-    console.log(randomScalingFactor());
     var ctx = $("#ytdBudget");
-    
+    var ctx2 = $("#ytdOpBudget");
+
     var barChartData = {
             labels: ["2011", "2012", "2013", "2014", "2015", "2016", "2017"],
             datasets: [{
                 label: 'Capital',
-                //backgroundColor: 'rgba(0, 0, 255, 0.1)',
-                //borderColor: window.chartColors.red,
+                backgroundColor: 'rgba(0, 0, 255, 0.9)',
+                borderColor: 'rgba(0, 0, 255, 0.1)',
                 borderWidth: 1,
                 data: [
                     randomScalingFactor(),
@@ -40,8 +54,8 @@
                 ]
             }, {
                 label: 'Non Capital',
-                //backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                //borderColor: window.chartColors.blue,
+                backgroundColor: 'rgba(0, 255, 0, 0.5)',
+                borderColor: 'rgba(0, 255, 0, 0.1)',
                 borderWidth: 1,
                 data: [
                     randomScalingFactor(),
@@ -61,5 +75,60 @@
         data : barChartData,
         options : {}
     });
+
+    var barChartData1 = {
+            labels: ["2011", "2012", "2013", "2014", "2015", "2016", "2017"],
+            datasets: [{
+                label: 'Exploration',
+                backgroundColor: 'rgba(0, 0, 255, 0.9)',
+                borderColor: 'rgba(0, 0, 255, 0.1)',
+                borderWidth: 1,
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ]
+            }, {
+                label: 'Development',
+                backgroundColor: 'rgba(0, 255, 0, 0.5)',
+                borderColor: 'rgba(0, 255, 0, 0.1)',
+                borderWidth: 1,
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ]
+            },{
+                label: 'Production',
+                backgroundColor: 'rgba(255, 0, 0, 0.5)',
+                borderColor: 'rgba(255, 0, 0, 0.1)',
+                borderWidth: 1,
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ]
+            }]
+
+        };
+
+
+    var ytdOperatorBarChart = new Chart(ctx2,{
+        type : 'bar',
+        data : barChartData1,
+        options : {}
     });
+});
 </script>

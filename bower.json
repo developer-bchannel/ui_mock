@@ -2,7 +2,7 @@
   "name": "mock-app",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": "1.10.x",
+    "jquery": "1.12.3",
     "angular": "1.6.8",
     "json3": "^3.3.1",
     "es5-shim": "^3.1.0",
@@ -25,12 +25,14 @@
     "ng-grid": "~2.0.7",
     "angular-smart-table": "~2.1.0",
     "angular-breadcrumb": "~0.4.1",
-    "angular-ui-notification": "^0.2.0"
+    "angular-ui-notification": "^0.2.0",
+    "jquery-color": "^2.1.2"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0",
     "angular-scenario": "1.2.16",
-    "chroma-js": "^0.5.6"
+    "chroma-js": "^0.5.6",
+    "jquery-color": "^2.1.2"
   },
   "appPath": "app",
   "moduleName": "mockAppApp",
