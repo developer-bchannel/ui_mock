@@ -30,17 +30,27 @@ angular.module('sbAdminApp')
           {
             field   : "bsType",
             title   : "BS Type",
-            width   : "8px",
+            width   : "7px",
           },
           {
             field   : "bsLine",
-            title   : "BS Line Number",
+            title   : "BS Line #",
+            width   : "7px"
+          },
+          {
+            field   : "originalValue",
+            title   : "Original Value ($)",
+            width   : "8px"
+          },
+          {
+            field   : "revisionValue",
+            title   : "Original Value ($)",
             width   : "8px"
           },
           {
             field   : "revisionDescription",
             title   : "Description",
-            width   : "50px"
+            width   : "38px"
           },
           {
             field   : "revisionDocument",

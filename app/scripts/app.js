@@ -78,26 +78,6 @@ angular
         templateUrl:'views/pages/login.html',
         url:'/login'
     })
-      .state('dashboard.chart',{
-        templateUrl:'views/chart.html',
-        url:'/chart',
-        controller:'ChartCtrl',
-        resolve: {
-          loadMyFile:function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name:'chart.js',
-              files:[
-                'bower_components/angular-chart.js/dist/angular-chart.min.js',
-                'bower_components/angular-chart.js/dist/angular-chart.css'
-              ]
-            }),
-            $ocLazyLoad.load({
-                name:'sbAdminApp',
-                files:['scripts/controllers/chartContoller.js']
-            })
-          }
-        }
-    })
       .state('dashboard.afeform',{
         templateUrl:'views/afebs/main.html',
         url:'/afebudget',
@@ -244,6 +224,22 @@ angular
         },
         ncyBreadcrumb:{
           label:'List All Pre WP&B'
+        }
+      })
+      .state('dashboard.wpnbapproval',{
+        templateUrl:'views/wpnbapproval/main.html',
+        url:'/wpnbreporting',
+        controller:'ReportWpnbCtrl',
+        resolve:{
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name : 'sbAdminApp',
+                files:['scripts/controllers/reportwpnbController.js']
+            })
+          }
+        },
+        ncyBreadcrumb:{
+          label:'List All PreApproved WP&B'
         }
       })
       .state('dashboard.prewpnb.statusform',{

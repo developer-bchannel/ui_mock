@@ -13,9 +13,9 @@ angular.module('sbAdminApp')
 
      $scope.$on("kendoWidgetCreated", function(event, widget){
           if (widget === $scope.projectSheet) {
-            
             var sheets = $scope.projectSheet.sheets();
-            $http.get('assets/BS19(T).json').then(function(data){
+
+            $.getJSON('assets/BS19(T).json').then(function(data){
               $scope.spreadsheetOptions = sheets[0].fromJSON(data);  
             }); 
           } 
