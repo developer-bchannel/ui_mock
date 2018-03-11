@@ -11,7 +11,23 @@ angular.module('sbAdminApp')
   	
     $scope.bsSelectorOptions = {
         autoWidth: true,
-        dataSource:['Project Budget', 'Inventory Budget']
+        dataSource:['Project Budget', 'Inventory Budget'],
+        select : function(e){
+          var dataItem = this.dataItem(e.item.index());
+          if(dataItem == 'Project Budget'){
+            $.getJSON('assets/BS19(T).json').then(function(data){
+              var sheets = $scope.projectSheet.sheets();
+              $scope.spreadsheetOptions = sheets[0].fromJSON(data);
+              $scope.sheets= [{ name: "BS19 (T)" }];
+            }); 
+          }else if(dataItem == 'Inventory Budget'){
+            $.getJSON('assets/BS20.json').then(function(data){
+              var sheets = $scope.projectSheet.sheets();
+              $scope.spreadsheetOptions = sheets[0].fromJSON(data);
+              $scope.sheets= [{ name: "BS20 (T)" }];
+            });
+          }
+        }
     };
 
     $scope.afeWizOptions = {
@@ -20,13 +36,13 @@ angular.module('sbAdminApp')
     };
 
 
-    $scope.sheets= [{ name: "BS19 (T)" }];
+    
 
     $scope.$on("kendoWidgetCreated", function(event, widget){
           // the event is emitted for every widget; if we have multiple
           // widgets in this controller, we need to check that the event
           // is for the one we're interested in.
-          
+          $scope.sheets= [{ name: "BS19 (T)" }];
           if (widget === $scope.projectSheet) {
             var sheets = $scope.projectSheet.sheets();
             $.getJSON('assets/BS19(T).json').then(function(data){
