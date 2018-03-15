@@ -1,11 +1,20 @@
 <div class="row">
     <div class="col-lg-12">
-        <h3 class="page-header">WP&B Process Monitoring</h3>
+        <h3 class="page-header">Pre WP&B Discussion Result</h3>
     </div>  
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <label for="reviewTemplate">Download WP&B Excel Template</label>
+        <label for="budgetType" class="required">Budget Type</label>
+    </div>
+    <div class="col-lg-12">
+        <kendo-dropdownlist k-scope-field="budgetType" k-options="budgetTypeOptions" ng-model="budgetSelected"></kendo-dropdownlist>
+    </div>  
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <label for="reviewTemplate">Download Pre WP&B Excel Template</label>
+        (View)
     </div>
     <div class="col-lg-12">
         <button type="button" class="btn btn-sm btn-primary">
@@ -14,20 +23,21 @@
 		</button>
     </div>
 </div>
-<div class="row">
+<div class="row" ng-if="budgetType">
     <div class="col-lg-12">
-        <label for="reviewType" class="required">Review Type</label>
+        <label for="reviewType" class="required">Cost Center</label>
     </div>
     <div class="col-lg-12">
         <kendo-dropdownlist k-scope-field="reviewType" k-options="reviewTypeOptions" ng-model="reviewSelected"></kendo-dropdownlist>
     </div>
 </div>
-    <div class="row">
+    <div class="row" ng-if="budgetType">
         <div class="col-lg-12">
             <label for="bsSelector" class="required">Revision List</label>
         </div>
         <div class="col-lg-12">
             <kendo-grid options="revisionGridOptions"></kendo-grid>
         </div>
-    </div>
 </div>
+
+<div ui-view></div>

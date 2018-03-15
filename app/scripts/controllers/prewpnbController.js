@@ -9,6 +9,7 @@
 angular.module('sbAdminApp')
   .controller('PrewpnbCtrl', 
     function ($scope, $timeout, $http, $log, $state, $stateParams) {
+      $scope.budgetType = false;
 
       function clickDetails(e){
         e.preventDefault();
@@ -17,45 +18,88 @@ angular.module('sbAdminApp')
       
       $scope.reviewTypeOptions = {
         autoWidth: true,
-        dataSource:['SKK Revision', 'Approved by SKK']
+        dataSource:['Executive', 'Corporate Service']
+    };
+
+    $scope.budgetTypeOptions = {
+      autoWidth: true,
+      dataSource:['Capital', 'Non Capital'],
+      select: function(e){
+        if (e.item) {
+          var selectedType = this.dataItem(e.item.index());
+
+          if(selectedType === "Non Capital"){
+            $scope.budgetType = true;
+          }else{
+            $scope.budgetType = false;
+          }
+        }
+      }
     };
 
       $scope.revisionGridOptions = {
         sortable  : true,
         pageable  : true,
         toolbar   : ["create"],
-        editable  : "inline",
+        editable  : true,
         height : 350,
+        dataSource: {
+          data:
+          [ 
+              {"bsLine":"89903010 - Stationary/Supplies", "originalValue1":"10000", "originalValue2":"1000","originalValue3":"100","originalValue4":"100"}     
+          ],
+          batch : true
+        },
         columns   : [
           {
-            field   : "bsType",
-            title   : "BS Type",
-            width   : "7px",
-          },
-          {
             field   : "bsLine",
-            title   : "BS Line #",
-            width   : "7px"
+            title   : "Account Code",
+            width   : "20px"
           },
           {
-            field   : "originalValue",
-            title   : "Original Value ($)",
+            field   : "originalValue1",
+            title   : "Original Q1 ($)",
             width   : "8px"
           },
           {
-            field   : "revisionValue",
-            title   : "Original Value ($)",
+            field   : "revisionValue1",
+            title   : "Revision Q1 ($)",
+            width   : "8px"
+          },
+          {
+            field   : "originalValue2",
+            title   : "Original Q2 ($)",
+            width   : "8px"
+          },
+          {
+            field   : "revisionValue2",
+            title   : "Revision Q2 ($)",
+            width   : "8px"
+          },
+          {
+            field   : "originalValue3",
+            title   : "Original Q3 ($)",
+            width   : "8px"
+          },
+          {
+            field   : "revisionValue3",
+            title   : "Revision Q3 ($)",
+            width   : "8px"
+          },
+          {
+            field   : "originalValue4",
+            title   : "Original Q4 ($)",
+            width   : "8px"
+          },
+          {
+            field   : "revisionValue4",
+            title   : "Revision Q4 ($)",
             width   : "8px"
           },
           {
             field   : "revisionDescription",
-            title   : "Description",
+            title   : "Remarks",
             width   : "38px"
-          },
-          {
-            field   : "revisionDocument",
-            title   : "Document Number",
-            width   : "15px"
           }]
       };
 
@@ -65,28 +109,28 @@ angular.module('sbAdminApp')
         height : 350,
         dataSource: {
                     data:
-                    [ {"wpnbId":"WPnB-001-2016-A", "pscName":"PSC A Madura Strait", "totalBudget":"$790,000","totalCapBudget":"$835,780"},
-                      {"wpnbId":"WPnB-002-2016-A", "pscName":"PSC B Natuna", "totalBudget":"$190,000","totalCapBudget":"$177,580"}                  
+                    [ {"period":"2017", "pscName":"Operator A", "totalBudget":"$790,000","totalCapBudget":"$835,780"},
+                      {"period":"2017", "pscName":"Operator A", "totalBudget":"$190,000","totalCapBudget":"$177,580"}                  
                     ]},
 
         columns   : [
         {
-          field   : "wpnbId",
-          title   : "WPnB #",
+          field   : "period",
+          title   : "Period",
           width   : "30px"
         },{
           field   : "pscName",
-          title   : "PSC Name",
+          title   : "Operator Name",
           width   : "35px",
         },
         {
           field   : "totalBudget",
-          title   : "Total Operational Budget",
+          title   : "Total Non Capital Budgeted",
           width   : "30px"
         },
         {
           field   : "totalCapBudget",
-          title   : "Total Project Budget",
+          title   : "Total Capital Budgeted",
           width   : "30px"
         },
         { command: { text: "View Details", click: clickDetails }, title: "Check Details", width: "20px" }]

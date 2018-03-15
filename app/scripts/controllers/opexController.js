@@ -17,34 +17,28 @@ angular.module('sbAdminApp')
           return "Production";
       };
 
+      var execData = [
+        "89903010 - Stationary/Supplies",
+        "89903020 - Printing/Photocopy/Reproduction",
+        "89903030 - Newspaper/Magazine Subscriptions",
+        "80199082	- Traveling & Accommodation Expatriate",
+        "89903050	- Communication (Others)"
+      ];
+
 
       var descriptionAutoComplete = function(container, options){
-        $('<input  data-bind="value:' + options.field + '" style="width: 120px" />')
+        $('<input  data-bind="value:' + options.field + '" style="width: 100%" />')
             .appendTo(container)
             .kendoAutoComplete({
-                dataSource: $scope.accountData,
+                dataSource: execData,
                 filter:"contains",
-                minLength:"1"
+                minLength:"3"
            });
-      };
-
-      $scope.accountData = {
-        transport :   {
-          read: function(e){
-            $http({
-              method  : 'GET',
-              url     : 'http://localhost:2222/getAllAccount'
-            }).success(function(response){
-              $log.debug(response   );
-              e.success(response);
-            });
-          } 
-        }
       };
 
       $scope.product = $stateParams.productId;
 
-    	$scope.budgetGridOptions = {
+    	$scope.execOptions = {
         sortable  : true,
         pageable  : true,
         toolbar   : ["create"],
@@ -53,18 +47,30 @@ angular.module('sbAdminApp')
                       this.expandRow(this.tbody.find("tr.k-master-row").first());
                     },
         dataSource: {
-
+                      schema:{
+                        model:{
+                          field:{
+                            naturalAccountCode:{type:"string"},
+                            accountDescription:{type:"string"},
+                            budgetQ1:{type:"number"},
+                            budgetQ2:{type:"number"},
+                            budgetQ3:{type:"number"},
+                            budgetQ4:{type:"number"}
+                          }
+                        }
+                      },
+                      offlineStorage : "offline-exec"
                     },
         columns   : [
         {
           field   : "naturalAccountCode",
           title   : "Cost Element",
-          width   : "80px"
+          width   : "100px",
+          editor  : descriptionAutoComplete,
         },{
           field   : "accountDescription",
           title   : "Description",
-          width   : "120px",
-          editor  : descriptionAutoComplete,
+          width   : "120px"
         },
         {
           field   : "budgetQ1",
