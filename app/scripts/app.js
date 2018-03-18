@@ -274,6 +274,22 @@ angular
           label:'Update Status Pre WP&B'
         }
       })
+      .state('dashboard.wpnbviewer',{
+        templateUrl:'views/wpnbapproval/bsviewer.html',
+        url:'/wpnb/viewer',
+        controller:'BsviewerCtrl',
+        resolve:{
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name : 'sbAdminApp',
+                files:['scripts/controllers/bsviewerController.js']
+            })
+          }
+        },
+        ncyBreadcrumb:{
+          label:'Budget Schedule Viewer'
+        }
+      })
        .state('dashboard.prewpnblanding',{
         templateUrl:'views/prewpnb/landingpage.html',
         url:'/prewpnbpage',
