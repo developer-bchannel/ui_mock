@@ -7,7 +7,7 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('WpnbCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+  .controller('WpnbCtrl', ['$scope', '$timeout', '$state', function ($scope, $timeout, $state) {
 
   	var wpnbProducts = ['Oil', 'Gas'];
     var wpnbPeriods = 2015;
@@ -23,7 +23,7 @@ angular.module('sbAdminApp')
                         {"periode":"2017", "pscName":"Operator A", "totalBudget":"$790,000","type":"Seismic/Survey"},
                         {"periode":"2017", "pscName":"Operator A", "totalBudget":"$190,000","type":"G&G Studies"}, 
                         {"periode":"2017", "pscName":"Operator A", "totalBudget":"$1,390,000","type":"Intagible Drilling/Workover"},
-                        {"periode":"2017", "pscName":"Operator A", "totalBudget":"$14,390,000","type":"Operational"}                
+                        {"periode":"2017", "pscName":"Operator A", "totalBudget":"$2,200","type":"Operational"}                
                     ]
                 },
 
@@ -52,7 +52,7 @@ angular.module('sbAdminApp')
     
     function clickDetails(e){
         e.preventDefault();
-        $state.go('dashboard.prewpnb.statusform');
+        $state.go('dashboard.wpnb.budgetform');
     };
 
   	function generateRandomItem(id) {

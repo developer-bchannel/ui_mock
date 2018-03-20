@@ -40,13 +40,14 @@ angular.module('sbAdminApp')
       $scope.revisionGridOptions = {
         sortable  : true,
         pageable  : true,
-        toolbar   : ["create"],
         editable  : true,
         height : 350,
         dataSource: {
           data:
           [ 
-              {"bsLine":"89903010 - Stationary/Supplies", "originalValue1":"10000", "originalValue2":"1000","originalValue3":"100","originalValue4":"100"}     
+              {"bsLine":"89903010 - Stationary/Supplies", "originalValue1":"2200", "originalValue2":"5350", "variance":"(58.89 %)"},
+              {"bsLine":"89903081 -	Traveling and Accomodation(Domestic Sundries)", "originalValue1":"30150", "originalValue2":"7350", "variance":"310.20 %"},
+              {"bsLine":"80206020	Office, Housing and Welfare Lease", "originalValue1":"2400", "originalValue2":"0", "variance":"0 %"},     
           ],
           batch : true
         },
@@ -58,49 +59,28 @@ angular.module('sbAdminApp')
           },
           {
             field   : "originalValue1",
-            title   : "Original Q1 ($)",
-            width   : "8px"
-          },
-          {
-            field   : "revisionValue1",
-            title   : "Revision Q1 ($)",
+            title   : "Current ($)",
             width   : "8px"
           },
           {
             field   : "originalValue2",
-            title   : "Original Q2 ($)",
+            title   : "Previous ($)",
             width   : "8px"
           },
           {
-            field   : "revisionValue2",
-            title   : "Revision Q2 ($)",
+            field   : "variance",
+            title   : "Variance ($)",
             width   : "8px"
           },
-          {
-            field   : "originalValue3",
-            title   : "Original Q3 ($)",
-            width   : "8px"
-          },
-          {
-            field   : "revisionValue3",
-            title   : "Revision Q3 ($)",
-            width   : "8px"
-          },
-          {
-            field   : "originalValue4",
-            title   : "Original Q4 ($)",
-            width   : "8px"
-          },
-          {
-            field   : "revisionValue4",
-            title   : "Revision Q4 ($)",
-            width   : "8px"
-          },
-          {
-            field   : "revisionDescription",
-            title   : "Remarks",
-            width   : "38px"
-          }]
+            {
+              command: [
+                { name: "approve", text: "Approve" },
+                { name: "reject", text: "Reject"},
+                { name: "correction", text: "Correction" }
+              ],
+              width : "13px"
+            }
+          ]
       };
 
       $scope.prewpnbGridOptions = {
@@ -110,7 +90,7 @@ angular.module('sbAdminApp')
         dataSource: {
                     data:
                     [ {"period":"2017", "pscName":"Operator A", "totalBudget":"$790,000","totalCapBudget":"$835,780"},
-                      {"period":"2017", "pscName":"Operator A", "totalBudget":"$190,000","totalCapBudget":"$177,580"}                  
+                      {"period":"2017", "pscName":"Operator A", "totalBudget":"$34,750","totalCapBudget":"$177,580"}                  
                     ]},
 
         columns   : [

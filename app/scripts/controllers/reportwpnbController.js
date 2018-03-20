@@ -13,6 +13,11 @@ angular.module('sbAdminApp')
         e.preventDefault();
         $state.go('dashboard.wpnbapproval.statusform');
       };
+
+    $scope.viewBs = function(){
+      //e.preventDefault();
+      $state.go('dashboard.wpnbviewer');
+    };
   	
     $scope.preAprrovedwpnbGridOptions = {
         sortable  : true,
@@ -20,8 +25,8 @@ angular.module('sbAdminApp')
         height : 350,
         dataSource: {
                     data:
-                    [ {"wpnbId":"2017", "pscName":"Operator A", "totalBudget":"$790,000","totalCapBudget":"$835,780","currStatus":"Reviewed"},
-                      {"wpnbId":"2017", "pscName":"Operator B", "totalBudget":"$190,000","totalCapBudget":"$177,580","currStatus":"Approved"},                  
+                    [ {"wpnbId":"2017", "pscName":"Operator C", "totalBudget":"$790,000","totalCapBudget":"$835,780","currStatus":"Approved"},
+                      {"wpnbId":"2017", "pscName":"Operator A", "totalBudget":"$34,750","totalCapBudget":"$177,780","currStatus":"Reviewed For Approval"},               
                       {"wpnbId":"2017", "pscName":"Operator B", "totalBudget":"$490,000","totalCapBudget":"$187,720","currStatus":"Review for Revision"}
                     ]},
 
@@ -29,11 +34,11 @@ angular.module('sbAdminApp')
         {
           field   : "wpnbId",
           title   : "Period",
-          width   : "30px"
+          width   : "15px"
         },{
           field   : "pscName",
           title   : "Operator Name",
-          width   : "35px",
+          width   : "20px",
         },
         {
           field   : "totalBudget",
@@ -50,7 +55,10 @@ angular.module('sbAdminApp')
           title   : "Current Status",
           width   : "30px"
         },
-        { command: { text: "Additional Document", click: clickDetails }, title: "Check Additional Documents", width: "20px" }]
+        { 
+          command: [{ text: "Details", click: clickDetails },{ text: "Document", click: clickDetails }], title: "Command", width: "30px" 
+        }
+          ]
       };
 
       $scope.reviewTypeOptions = {
