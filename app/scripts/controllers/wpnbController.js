@@ -20,10 +20,10 @@ angular.module('sbAdminApp')
         dataSource: {
                     data:
                     [ 
-                        {"periode":"2017", "pscName":"Operator A", "totalBudget":"$790,000","type":"Seismic/Survey"},
-                        {"periode":"2017", "pscName":"Operator A", "totalBudget":"$190,000","type":"G&G Studies"}, 
-                        {"periode":"2017", "pscName":"Operator A", "totalBudget":"$1,390,000","type":"Intagible Drilling/Workover"},
-                        {"periode":"2017", "pscName":"Operator A", "totalBudget":"$2,200","type":"Operational"}                
+                        {"periode":"2018", "pscName":"Operator A", "totalBudget":"$ 790.000","type":"Seismic/Survey"},
+                        {"periode":"2018", "pscName":"Operator A", "totalBudget":"$ 190.000","type":"G&G Studies"}, 
+                        {"periode":"2018", "pscName":"Operator A", "totalBudget":"$ 2.004.109","type":"Intagible Drilling/Workover"},
+                        {"periode":"2018", "pscName":"Operator A", "totalBudget":"$ 1.222.200","type":"Operational Expense"}
                     ]
                 },
 
@@ -52,7 +52,16 @@ angular.module('sbAdminApp')
     
     function clickDetails(e){
         e.preventDefault();
-        $state.go('dashboard.wpnb.budgetform');
+
+		var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+				console.log(dataItem);
+		if(dataItem.type == "Intangible Drilling/Workover"){
+			$state.go("dashboard.drillingbudget");
+		} else if(dataItem.type == "G&G Studies"){
+			$state.go("dashboard.surveybudget");
+        } else if(dataItem.type == "Operational Expense"){
+             $state.go('dashboard.budgetform');
+        }
     };
 
   	function generateRandomItem(id) {

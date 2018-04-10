@@ -20,35 +20,44 @@ angular.module('sbAdminApp')
 	                    },
 	        dataSource: {
 							data : [
-								{skkAfeNumber: "2017-019-0015",internalAfeNumber:"2018",opCompany:"OperatorA",afeBsType:"Tangible Drilling/Workover",totalEstCost:"$ 250.000.000"},
-								{skkAfeNumber: "2017-18A-0016",internalAfeNumber:"2018",opCompany:"OperatorB",afeBsType:"Facilities",totalEstCost:"$ 550.000.000"},
-								{skkAfeNumber: "2017-18B-0017",internalAfeNumber:"2018",opCompany:"OperatorC",afeBsType:"Equipment",totalEstCost:"$ 1.550.000.000"}
+								{skkAfeNumber: "2017-019-0015",internalAfeNumber:"2018",opCompany:"Operator A",afeBsType:"Tangible Drilling/Workover",totalEstCost:"$ 297.347"},
+								{skkAfeNumber: "2017-18A-0016",internalAfeNumber:"2018",opCompany:"Operator A",afeBsType:"Facilities",totalEstCost:"$ 550.000.000"},
+								{skkAfeNumber: "2017-18B-0017",internalAfeNumber:"2018",opCompany:"Operator A",afeBsType:"Equipment",totalEstCost:"$ 1.550.000.000"}
 							]
 	                    },
 	        columns   : [
 	        {
-	          field   : "skkAfeNumber",
-	          title   : "SKK WP&B#",
-	          width   : "80px"
-	        },{
 	          field   : "internalAfeNumber",
-	          title   : "Periods",
-	          width   : "70px"
+	          title   : "Period",
+	          width   : "30px"
 	        },{
 	          field   : "opCompany",
 	          title   : "Operator Company",
-	          width   : "120px"
+	          width   : "30px"
 	        },
 	        {
 	          field   : "afeBsType",
 	          title   : "Budget Type",
-	          width   : "100px"
+	          width   : "35px"
 	        },{
 	          field   : "totalEstCost",
-	          title   : "Total Est.Cost",
-	          width   : "100px"
-	        }]
+	          title   : "Total Budget",
+	          width   : "30px"
+					},
+					{ command: { text: "View Details", click: clickDetails }, title: "Check Details", width: "20px" }
+				]
       };
+			
+			function clickDetails(e){
+				e.preventDefault();
+				var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+				console.log(dataItem);
+				if(dataItem.afeBsType == "Tangible Drilling/Workover"){
+					$state.go("dashboard.drillingbudget");
+				} else if(dataItem.afeBsType == "G&G Studies"){
+					$state.go("dashboard.surveybudget");
+				}
+    	};
 
       $scope.newAfe = function(){
 

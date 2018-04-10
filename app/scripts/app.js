@@ -176,7 +176,7 @@ angular
           label:'List All Budget'
         }
       })
-       .state('dashboard.wpnb.budgetform',{
+       .state('dashboard.budgetform',{
         templateUrl:'views/wpnb/opexbudget.html',
         url:'/createbudget/?productId&budgetTypeId&period',
         controller:'OpexCtrl',
@@ -322,6 +322,38 @@ angular
         },
         ncyBreadcrumb:{
           label:'WPnB Template'
+        }
+      })
+      .state('dashboard.drillingbudget',{
+        templateUrl:'views/form/drillingbudget.html',
+        url:'/drillingform',
+        controller:'DrillingBudgetCtrl',
+        resolve:{
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name : 'sbAdminApp',
+                files:['scripts/controllers/drillingBudgetController.js']
+            })
+          }
+        },
+        ncyBreadcrumb:{
+          label:'Detail Drilling Budget'
+        }
+      })
+      .state('dashboard.surveybudget',{
+        templateUrl:'views/form/surveybudget.html',
+        url:'/surveyform',
+        controller:'SurveyBudgetCtrl',
+        resolve:{
+          loadMyFile:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+                name : 'sbAdminApp',
+                files:['scripts/controllers/surveyBudgetController.js']
+            })
+          }
+        },
+        ncyBreadcrumb:{
+          label:'Detail Survey/Study Budget'
         }
       })
   }]);
