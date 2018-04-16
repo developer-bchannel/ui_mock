@@ -20,16 +20,16 @@ angular.module('sbAdminApp')
 	                    },
 	        dataSource: {
 							data : [
-								{skkAfeNumber: "2017-019-0015",internalAfeNumber:"2018",opCompany:"Operator A",afeBsType:"Tangible Drilling/Workover",totalEstCost:"$ 297.347"},
-								{skkAfeNumber: "2017-18A-0016",internalAfeNumber:"2018",opCompany:"Operator A",afeBsType:"Facilities",totalEstCost:"$ 550.000.000"},
-								{skkAfeNumber: "2017-18B-0017",internalAfeNumber:"2018",opCompany:"Operator A",afeBsType:"Equipment",totalEstCost:"$ 1.550.000.000"}
+								{skkAfeNumber: "2017-019-0015",internalAfeNumber:"2018",opCompany:"Operator A",afeBsType:"Tangible Drilling/Workover",totalEstCost:"$ 297.347", budgetStatus:"Draft"},
+								{skkAfeNumber: "2017-18A-0016",internalAfeNumber:"2018",opCompany:"Operator A",afeBsType:"Facilities",totalEstCost:"$ 550.000.000", budgetStatus: "Ready For Review"},
+								{skkAfeNumber: "2017-18B-0017",internalAfeNumber:"2018",opCompany:"Operator A",afeBsType:"Equipment",totalEstCost:"$ 1.550.000.000", budgetStatus: "Reviewed"}
 							]
 	                    },
 	        columns   : [
 	        {
 	          field   : "internalAfeNumber",
 	          title   : "Period",
-	          width   : "30px"
+	          width   : "12px"
 	        },{
 	          field   : "opCompany",
 	          title   : "Operator Company",
@@ -38,11 +38,16 @@ angular.module('sbAdminApp')
 	        {
 	          field   : "afeBsType",
 	          title   : "Budget Type",
-	          width   : "35px"
+	          width   : "25px"
 	        },{
 	          field   : "totalEstCost",
 	          title   : "Total Budget",
-	          width   : "30px"
+	          width   : "15px"
+					},
+					{
+	          field   : "budgetStatus",
+	          title   : "Status",
+	          width   : "15px"
 					},
 					{ command: { text: "View Details", click: clickDetails }, title: "Check Details", width: "20px" }
 				]

@@ -83,7 +83,7 @@ angular
         url:'/afebudget',
         controller:'AfeCtrl',
         ncyBreadcrumb: {
-          label : 'AFE Budget'
+          label : 'Manage Capital Budget'
         },
         resolve: {
           loadMyFile:function($ocLazyLoad) {
@@ -173,7 +173,7 @@ angular
           }
         },
         ncyBreadcrumb:{
-          label:'List All Budget'
+          label:'Manage Non Capital Budget'
         }
       })
        .state('dashboard.budgetform',{

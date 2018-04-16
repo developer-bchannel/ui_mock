@@ -17,7 +17,7 @@ angular.module('sbAdminApp')
           // is for the one we're interested in.
           if (widget === $scope.spreadsheet) {
             var sheets = $scope.spreadsheet.sheets();
-            $scope.spreadsheet.activeSheet(sheets[1]);
+            $scope.spreadsheet.activeSheet(sheets[0]);
           }
           if (widget === $scope.spreadsheet1) {
             var sheets = $scope.spreadsheet1.sheets();

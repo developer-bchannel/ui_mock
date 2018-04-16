@@ -89,24 +89,24 @@ angular.module('sbAdminApp')
                       data : 
                       [
                           {
-                            naturalAccountCode : "40201031 -	WIP Development Wells - Tubing - Domestic",
-                            accountDescription : "Perforated Tubing O/D 9mm I/D 7.5mm",
+                            naturalAccountCode : "40502120 - WIP GGR - Field Trial Project - Domestic Sundries",
+                            accountDescription : "Duration 6 months",
                             budgetQ1 : "45200",
                             budgetQ2 : "0",
                             budgetQ3 : "0",
                             budgetQ4 : "49030"
                           },
                           {
-                            naturalAccountCode : "40201041	- WIP Development Wells - Well Equipment Surface  - Domestic",
-                            accountDescription : "Rig Pump 117 Psi",
+                            naturalAccountCode : "40501012 - WIP G&G - Lab Analysis - Overseas Technical Service",
+                            accountDescription : "Siemens Singapore Geology Laboratorium",
                             budgetQ1 : "50000",
                             budgetQ2 : "57646",
                             budgetQ3 : "40000",
                             budgetQ4 : "0"
                           },
                           {
-                            naturalAccountCode : "40201052	- WIP Development Wells - Well Equipment Sub Surface - Import",
-                            accountDescription : "Rig Pump 117 Psi (Subsurface)",
+                            naturalAccountCode : "40502960 - WIP GGR - Others - Domestic Contract Service",
+                            accountDescription : "Contract 3 mo PT xxx",
                             budgetQ1 : "50000",
                             budgetQ2 : "5471",
                             budgetQ3 : "0",
